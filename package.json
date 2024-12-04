@@ -1,0 +1,16 @@
+{
+  "name": "remote-module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "scripts": {
+    "project1": "cd app-host && yarn start",
+    "project2": "cd app-remote && yarn start",
+    "project3": "cd app-remote2 && yarn start",
+    "p12": "concurrently \"npm run project1\" \"npm run project2\"",
+    "p123": "concurrently \"npm run project1\" \"npm run project2\" \"npm run project3\""
+  }
+}
