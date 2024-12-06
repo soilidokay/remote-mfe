@@ -2,12 +2,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-const { SetupArgShare } = require('core-mfe-module/dist/WebpackArgShared');
-module.exports = {
+// const { SetupArgShare } = require('core-mfe-module/dist/WebpackArgShared');
+/** @type {(env: any, arg: {mode: string}) => import('webpack').Configuration} **/
+
+module.exports = (env, argv) => ({
   mode: 'development',
   entry: './src/index.tsx',
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
@@ -32,23 +34,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new ModuleFederationPlugin({
-      name: 'host',
-      remotes: {
-        // ...SetupArgShare()
-      },
-      shared: {
-        "core-mfe-module": {
-          singleton: true,
-          eager: true,
-          requiredVersion: '^1.1.7',
-        }
-      }
-    })
   ],
   devServer: {
     static: './dist',
     port: 3000,
     hot: true,
   },
-};
+  // optimization: {
+  //   runtimeChunk: 'single',
+  //   splitChunks: {
+  //     chunks: 'all',
+  //   },
+  // },
+});

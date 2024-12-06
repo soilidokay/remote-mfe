@@ -14,11 +14,16 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "paths": {
+      "*": [
+        "./@mf-types/*"
+      ]
+    }
   },
   "include": [
     "src/**/*",
-    "modules/partner-module-config-mfe"
+    "./@mf-types/*"
   ],
   "exclude": [
     "node_modules"

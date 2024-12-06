@@ -13,8 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@module-federation/runtime": "^0.8.0",
-    "tslib": "^2.8.1"
+    "tslib": "^2.8.1",
+    "@module-federation/enhanced": "^0.8.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
